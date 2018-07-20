@@ -10,6 +10,11 @@
     <div id="app">
         {{message}}
    </div>
+   <div id="app-2">
+       <span v-bind:title="messages">
+        鼠标悬停几秒查看此处动态绑定的提示信息！
+       </span>
+   </div>
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
        console.log('1')
@@ -18,6 +23,12 @@
         data:{
             message:'Hello Vue!'
         },
+   })
+   const app2 = new Vue({
+       el:'#app-2',
+       data:{
+           messages:'页面加载于' + new Date().toLocaleString()
+       }
    })
    
    </script> 
