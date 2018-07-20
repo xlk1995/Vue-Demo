@@ -8,24 +8,20 @@
 </head>
 <body>
     <div id="app">
-        <ol>
-            <li v-for="todo in todos">
-                {{todo.text}}
-            </li>
-        </ol>
+        <p>{{message}}</p>
+        <button v-on:click="resovleMessage">逆转消息</button>
    </div>
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
     const app = new Vue({
         el:'#app',
         data:{
-            todos:[
-
-                {text:'learn javascript'},
-                {text:'learn vue'},
-                {text:'learn css'}
-            ]
-
+            message:'Hello Vue.js'
+        },
+        methods:{
+            resovleMessage:function(){
+                this.message = this.message.split('').reverse().join('')
+            }
 
         }
 
