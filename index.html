@@ -8,31 +8,17 @@
 </head>
 <body>
     <div id="app">
-        <ol>
-            <todo-item
-                v-for='item in groceryList'
-                v-bind:todo = "item"
-                v-bind:key="item.id"
-            ></todo-item>
-        </ol>
+        <p>{{foo}}</p>
+        <button v-on:click="foo='baz'">change it !</button>
     </div>
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
-       Vue.component('todo-item',{
-           props:['todo'],
-            template:'<li>{{todo.text}}</li>'
+       var obj = {foo:'fool'}
+       Object.freeze(obj)
+       var vm = new Vue({
+           el:'#app',
+           data:obj
        })
-    const app = new Vue({
-        el:'#app',
-        data:{
-            groceryList:[
-                {id:0,text:'蔬菜'},
-                {id:1,text:'奶酪'},
-                {id:2,text:'随便'}
-            ]
-        }
-   })
-   
    </script> 
 </body>
 </html>
