@@ -8,16 +8,26 @@
 </head>
 <body>
     <div id="app">
-        <p>{{foo}}</p>
-        <button v-on:click="foo='baz'">change it !</button>
+        <p>{{fullName}}</p>
     </div>
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
-       var obj = {foo:'fool'}
-       Object.freeze(obj)
        var vm = new Vue({
            el:'#app',
-           data:obj
+           data:{
+               firstName:'Foo',
+               lastName:'Bar',
+               fullName:'Foo Bar'
+           },
+           watch:{
+               firstName:function(val){
+                   this.fullName = val + '' +this.lastName
+               },
+               lastName:function(val){
+                   this.fullName = this.firstName + '' + val
+               }
+           }
+           
        })
    </script> 
 </body>
