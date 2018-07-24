@@ -7,31 +7,19 @@
     <title>VUE-DEMO</title>
 </head>
 <body>
-    <div id="app">
-        <p>{{fullName}}</p>
-    </div>
+    <div id="app" class="static" 
+    v-bind:class="{ 'active':isActive, 'text-danger':hasError}"></div>
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
-   <script>
-       var vm = new Vue({
-           el:'#app',
-           data:{
-               firstName:'Foo',
-               lastName:'Bar'
-           },
-           computed:{
-               fullName:{
-                   get :function(){
-                       return this.firstName+' '+this.lastName
-                   },
-                   set:function(newValue){
-                       var names = newValue.split(' ')
-                       this.firstName = names[0]
-                       this.lastName = names[names.length-1]
-                   }
-               }
-           }
-           
-       })
-   </script> 
+    <script>
+        var vm = new Vue({
+            el :'#app',
+            data :{
+                isActive:true,
+                hasError:true
+            }
+
+        })
+    </script>
+</script>
 </body>
 </html>
