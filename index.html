@@ -8,37 +8,22 @@
 </head>
 <body>
     <div id ="app">
-        <template v-if="loginType === 'username'">
-            <label>Username</label>
-            <input placeholder="Enter you username" key="username-input">
-        </template>
-        <template v-else>
-            <label>Email</label>
-            <input placeholder="Enter you email address" key="email-input">
-        </template>
-        <button @click="toggleLoginType">Toggle login type</button>
-    </div>
-    
-    
-
- 
+        <ul>
+            <li v-for="item in items">{{item.message}}</li>
+        </ul>
     </div>
    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
        var vm = new Vue ({
            el:'#app',
            data:{
-               loginType:'username'
+               items:[
+                   {message:'ni'},
+                   {message:'hao'}
+                   
+                ]
            },
-           methods:{
-               toggleLoginType:function(){
-                   return this.loginType = this.loginType === 'username'?'email':'username'
-               }
-
-           }
-
        })
    </script>
-
 </body>
 </html>
