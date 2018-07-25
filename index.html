@@ -7,12 +7,20 @@
     <title>VUE-DEMO</title>
 </head>
 <body>
-    <div id="app">
-    <template v-if="ok">
-        <h1>Title</h1>
-        <p>Paragraph1</p>
-        <p>Paragraph2</p>
-    </template>
+    <div id ="app">
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter you username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter you email address" key="email-input">
+        </template>
+        <button @click="toggleLoginType">Toggle login type</button>
+    </div>
+    
+    
+
  
     </div>
    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
@@ -20,7 +28,13 @@
        var vm = new Vue ({
            el:'#app',
            data:{
-               ok:true
+               loginType:'username'
+           },
+           methods:{
+               toggleLoginType:function(){
+                   return this.loginType = this.loginType === 'username'?'email':'username'
+               }
+
            }
 
        })
