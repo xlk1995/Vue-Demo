@@ -7,19 +7,18 @@
     <title>VUE-DEMO</title>
 </head>
 <body>
-    <div id="app" class="static" 
-    v-bind:class="{ 'active':isActive, 'text-danger':hasError}"></div>
+    <div id="app" 
+    v-bind:class = "[activeClass,errorClass]"></div>
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
     <script>
         var vm = new Vue({
-            el :'#app',
-            data :{
-                isActive:true,
-                hasError:true
+            el:'#app',
+            data:{
+                activeClass:'active',
+                errorClass:'text-danger'
             }
 
         })
     </script>
-</script>
 </body>
 </html>
