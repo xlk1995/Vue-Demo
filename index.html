@@ -8,22 +8,16 @@
 </head>
 <body>
     <div id ="app">
-        <template v-for="item in items">
-            <li>{{item.msg}}</li>
-            <li class="divider" role="presentation"></li>
-
-        </template>
-    </div>
+        <button v-on:click ="counter += 1">Add 1</button>
+        <p>the button above has clicked {{counter}} times</p>
+   </div>
    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
        var vm = new Vue ({
            el:'#app',
            data:{
-               items:[
-                   {msg:'bar'},
-                   {msg:'foo'}
-               ]
-           },
+               counter:0
+          },
        })
    </script>
 </body>
