@@ -9,20 +9,27 @@
 <body>
     <div id ="app">
         <ul>
-            <li v-for="item in items">{{item.message}}</li>
+            <li v-for="n in evenNumbers">
+                {{n}}
+            </li>
         </ul>
+        
     </div>
    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
        var vm = new Vue ({
            el:'#app',
            data:{
-               items:[
-                   {message:'ni'},
-                   {message:'hao'}
-                   
-                ]
+              number:[1,2,3,4,5]
            },
+           computed:{
+                evenNumbers :function(){
+                    return this.number.filter(function(number){
+                        return number %2 ===0
+
+                    })
+                }
+           }
        })
    </script>
 </body>
