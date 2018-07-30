@@ -8,13 +8,11 @@
 </head>
 <body>
     <div id ="app">
-        <input type="checkbox" id="jack" value="jack" v-model="checkedName">
-        <label for="jack">jack</label>
-        <input type="checkbox" id="mary" value="mary" v-model="checkedName">
-        <label for="mary">mary</label>
-        <input type="checkbox" id="kk" value="kk" v-model="checkedName">
-        <label for="kk">kk</label>
-        <div>checkedName:{{checkedName}}</div>
+        <input type="radio" id="one" value="one" v-model="picked">
+        <label for="one">One</label>
+        <input type="radio" id="two" value="two" v-model="picked">
+        <label for="two">two</label>
+        <div>picked:{{picked}}</div>
 
    </div>
    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
@@ -22,7 +20,7 @@
        var vm = new Vue ({
            el:'#app',
            data:{
-               checkedName:[]
+               picked:''
           }
        })
    </script>
