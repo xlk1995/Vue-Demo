@@ -8,11 +8,13 @@
 </head>
 <body>
     <div id ="app">
-        <input type="radio" id="one" value="one" v-model="picked">
-        <label for="one">One</label>
-        <input type="radio" id="two" value="two" v-model="picked">
-        <label for="two">two</label>
-        <div>picked:{{picked}}</div>
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{option.text}}
+            </option>
+        </select>
+        <br>
+        <div>selected:{{selected}}</div>
 
    </div>
    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
@@ -20,7 +22,13 @@
        var vm = new Vue ({
            el:'#app',
            data:{
-               picked:''
+               selected:'A',
+               options:[
+                   {text:'one',value:'A'},
+                   {text:'two',value:'B'},
+                   {text:'three',value:'C'}
+
+               ]
           }
        })
    </script>
