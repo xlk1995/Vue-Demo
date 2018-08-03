@@ -8,11 +8,15 @@
 </head>
 <body>
     <div id ="app">
-        <blog-post
-            v-for="post in posts"
-            v-bind:key="post.id"
-            v-bind:post="post"
-        ></blog-post>
+        <div :style="{fontSize:postFontSize+'em'}">
+            <blog-post
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                v-on:enlarge-text="postFontSize+=0.1"
+                v-on:reduce-text="postFontSize-=0.1"
+            ></blog-post>
+        </div>
    </div>
    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
@@ -21,6 +25,12 @@
            template:`
                 <div class="blog-post">
                     <h3>{{ post.title }}</h3>
+                    <button v-on:click="$emit('enlarge-text')">
+                        Enlarge text
+                    </button>
+                    <button v-on:click="$emit('reduce-text')">
+                        reduce text
+                    </button>
                     <div v-html="post.content"></div>
                 </div>
            `
@@ -31,8 +41,10 @@
                posts:[
                    {id:1,title:"hello",content:"fsafasfasf"},
                    {id:2,title:"hello",content:"fsafasfasf"}
-               ]
-           }
+               ],
+               postFontSize:1
+           },
+           
 
        })
    </script>
