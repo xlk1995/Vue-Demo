@@ -8,49 +8,26 @@
 </head>
 <body>
     <div id ="app">
-        <div :style="{fontSize:postFontSize+'em'}">
-            <blog-post
-                v-for="post in posts"
-                v-bind:key="post.id"
-                v-bind:post="post"
-                v-on:enlarge-text="postFontSize+=$event"
-                v-on:reduce-text="onreduceText"
-            ></blog-post>
-        </div>
+        <alert-box>
+            something bad happend.
+        </alert-box>
+    </div>
    </div>
    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
    <script>
-       Vue.component('blog-post',{
-           props:['post'],
+       Vue.component('alert-box',{
            template:`
-                <div class="blog-post">
-                    <h3>{{ post.title }}</h3>
-                    <button v-on:click="$emit('enlarge-text',0.1)">
-                        Enlarge text
-                    </button>
-                    <button v-on:click="$emit('reduce-text',0.1)">
-                        reduce text
-                    </button>
-                    <div v-html="post.content"></div>
-                </div>
+            <div class="demo-alert-box">
+                <strong>Error!!!</strong>
+                <slot></slot>
+            </div>
+           
            `
        })
        new Vue({
            el:'#app',
            data:{
-               posts:[
-                   {id:1,title:"hello",content:"fsafasfasf"},
-                   {id:2,title:"hello",content:"fsafasfasf"}
-               ],
-               postFontSize:1
-           },
-           methods:{
-               onreduceText:function(reduceAmount){
-                   this.postFontSize -= reduceAmount
-               }
-
            }
-           
 
        })
    </script>
